@@ -60,6 +60,16 @@ else
   echo ${#str}
 fi;;
 
+#task_2.6
+#!/bin/bash
+
+"log")
+  info="\\(II\\)"
+  warn="\\(WW\\)"
+grep -E -h -s $info /var/log/anaconda/X.log | sed -E "s/$info/Information: /" >> filename.log
+grep -E -h -s $warn /var/log/anaconda/X.log | sed -E "s/$warn/Warning: /" >> filename.log
+fi;;
+
 *)
   echo "error"
 esac
