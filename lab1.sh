@@ -63,12 +63,27 @@ fi;;
 #task_2.6
 #!/bin/bash
 
-"log")
-  info="\\(II\\)"
-  warn="\\(WW\\)"
-grep -E -h -s $info /var/log/anaconda/X.log | sed -E "s/$info/Information: /" >> filename.log
-grep -E -h -s $warn /var/log/anaconda/X.log | sed -E "s/$warn/Warning: /" >> filename.log
+
+  #info="\\(II\\)
+  #warn=""\\(WW\\)
+#grep -E -h -s $info /var/log/anaconda/X.log | sed -E s/$info/Information: /" >> filename.log
+#grep -E -h -s $warn /var/log/anaconda/X.log | sed -E s/$warn/Warning: /" >> filename.log
+
+
+#task_2.7
+#!/bin/bash
+
+"exit")
+if [ -z "$2" ]; then
+  echo exit 0
+else
+ code="$2"
+ echo exit $code
 fi;;
+
+#task_2.8
+#!/bin/bash
+
 
 *)
   echo "error"
