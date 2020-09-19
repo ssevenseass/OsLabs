@@ -63,11 +63,11 @@ fi;;
 #task_2.6
 #!/bin/bash
 
-
-  #info="\\(II\\)
-  #warn=""\\(WW\\)
-#grep -E -h -s $info /var/log/anaconda/X.log | sed -E s/$info/Information: /" >> filename.log
-#grep -E -h -s $warn /var/log/anaconda/X.log | sed -E s/$warn/Warning: /" >> filename.log
+#log")
+  #info=\\(II\\)"
+  #warn=\\(WW\\)"
+#GREP_COLOR=1;34 grep -E -h -s $info /var/log/anaconda/X.log | sed -E s/$info/Information: /" >> filename.log
+#GREP_COLOR=1;33 grep -E -h -s $warn /var/log/anaconda/X.log | sed -E s/$warn/Warning: /" >> filename.log
 
 
 #task_2.7
@@ -83,6 +83,14 @@ fi;;
 
 #task_2.8
 #!/bin/bash
+
+"help")
+man bash;;
+
+#task_2.9
+#!/bin/bash
+
+
 
 
 *)
