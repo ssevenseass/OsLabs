@@ -75,7 +75,7 @@ fi;;
 
 "exit")
 if [ -z "$2" ]; then
-  echo exit 0
+  echo exit $?
 else
  code="$2"
  echo exit $code
