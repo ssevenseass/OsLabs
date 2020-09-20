@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+declare -A array
+array=([A]=calc [B]=search [C]=reverse [D]=strlen [E]=log [F]=exit [G]=help)
 comand="$1"
   case $comand in
 
@@ -87,12 +90,35 @@ fi;;
 "help")
 man bash;;
 
-#task_2.9
+#task_2.9-task_2.12
 #!/bin/bash
 
+"interactive")
 
+while :
+  do
+echo "Menu:"
+  for key in "${!array[@]}"
+  do
+ echo "$key) ${array[$key]}"
+done
+printf "Input command: "
+  read -r command
+case "$command" in
+"quit")
+  break 2;;
+"${array[@]}")  command="${array[$command]}";;
+esac
+  printf "Input arguments: "
+read -r args
+ bash "$0" "$command" "$args"
+echo
+done
+;;
 
 
 *)
+
   echo "error"
+  echo "APPLICATION HELP. 1.The command calc performs arithmetic operations on numbers. 2."
 esac
