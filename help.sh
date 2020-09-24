@@ -1,6 +1,5 @@
 #!/bin/bash
 
-function help() {
 
 echo "APPLICATION HELP.
  A. The command CALC - number1, char, number2, sum, sub, mul, div.
@@ -10,6 +9,5 @@ echo "APPLICATION HELP.
  E. The command LOG.
  F. The command EXIT.
  G. The command HELP."
-}
 
 
