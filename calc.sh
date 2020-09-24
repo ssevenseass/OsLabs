@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function calc() {
+
  if [ -z "$1" ]; then
 read number1 char number2
   case $char in
@@ -20,6 +20,5 @@ read number1 number2
 "div") [ $number2 -eq 0 ] && echo "error" || echo $((number / number2));;
  esac
 fi
-}
 
 
