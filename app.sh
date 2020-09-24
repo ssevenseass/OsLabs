@@ -25,10 +25,11 @@ bash exit.sh;;
 bash help.sh;;
 
 "interactive")
-bash lab.sh;;
+bash inter.sh;;
 
 *)
 echo "error" >/dev/stderr;
 bash help.sh
  echo exit 88;;
 esac
+
