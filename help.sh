@@ -17,6 +17,7 @@ echo "APPLICATION HELP.
  exit 55 -
  exit 66 -
  exit 12 -
- exit 88 -   "
+ exit 88 -
+ exit 1 -    "
 
 
