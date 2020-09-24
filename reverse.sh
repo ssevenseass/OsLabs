@@ -4,7 +4,7 @@
   firstfile="$1"
   secondfile="$2"
  if [ -f $firstfile ]; then
-  sort $firstfile -r > $secondfile
+  sort $firstfile -r > secondfile
 else echo "error"
 fi
   if ![[ -w "$2" ]]; then
