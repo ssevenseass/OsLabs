@@ -7,7 +7,7 @@
   sort $firstfile -r > $secondfile
 else echo "error"
 fi
-  if [[ -w "$2" ]]; then
+  if ![[ -w "$2" ]]; then
 echo "error" > /dev/stderr
   bash help.sh
 echo exit 55;
