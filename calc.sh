@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function calc() {
- if [ -z "$2" ]; then
+ if [ -z "$1" ]; then
 read number1 char number2
   case $char in
 "+") echo $((number1 + number2));;
@@ -12,7 +12,7 @@ read number1 char number2
 else
 
 read number1 number2
- argument="$2"
+ argument="$1"
   case $argument in
 "sum") echo $((number1 + number2));;
 "sub") echo $((number1 - number2));;
