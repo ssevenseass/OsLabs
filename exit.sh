@@ -1,10 +1,10 @@
 #!/bin/bash
 
 fuction exit() {
-  if [ -z "$2" ]; then 
+  if [ -z "$1" ]; then 
  echo exit $?
 else
- code="$2"
+ code="$1"
 echo exit $code
 fi
 
