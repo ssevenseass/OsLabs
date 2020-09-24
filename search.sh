@@ -5,11 +5,11 @@
  ls "$DIR" | grep "$2"
 else echo "error" > /dev/stderr
  bash help.sh
- exit 22;
+ echo exit 22;
 fi
 
 if [[ $# -ne 2 ]]; then
   echo "error" > /dev/stderr
 bash help.sh
-exit 77;
+ echo exit 77;
 fi
