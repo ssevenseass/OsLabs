@@ -1,8 +1,17 @@
 #!/bin/bash
 
+  name=/var/log/anaconda/X.log
+  if ![[ -f $name ]]; then
+echo "error" > /dev/stderr
+  bash help.sh
+echo exit 1;
+ else
 
-  information="\\(II\\)"
-  warning="\\(WW\\)"
- grep -E -h -s $information /var/log/anaconda/X.log | sed -E "s/$information/Information: /" >> filename.log
- grep -E -h -s $warning /var/log/anaconda/X.log | sed -E "s/$warning/Warning: /" >> filename.log
+ sed -n 's/] (WW)/] Warning' $name > filename.txt
+ sed -n 's/] (II)/] Information' $name > filename.txt
+
+ GREP_COLOR="1;33" grep --color="always" "Warning" filename.txt
+ GREP_COLOR="1;34" grep --color="always" "Information" filename.txt
+  rm filename.txt
+fi
 
