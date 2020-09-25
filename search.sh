@@ -13,3 +13,9 @@ if [[ $# -ne 2 ]]; then
 bash help.sh
  echo exit 77;
 fi
+
+  if ! [ -d /path/directory/ ]; then
+  echo "error" > /dev/stderr
+  bash help.sh
+echo exit 20;
+fi
