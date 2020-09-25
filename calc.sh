@@ -27,10 +27,17 @@ echo exit 11;
 fi
 
 
-  if [[ $2 =~ ^-?[0-9]+$ ]] || ![[ $3=~ ^-?[0-9]+$ ]]; then
+  if [[ $2 =~ ^[+-]?[0-9]+([.][0-9]?$ ]] || ![[ $3=~ ^[+-]?[0-9]+([.][0-9]?$ ]]; then
 echo "error" > /dev/stderr
   bash help.sh
 echo exit 33;
+fi
+
+
+  if ! [[ $1 == 'sum' || $1 == 'sub' || $1 == 'mul' || $1 == 'div' ]]
+ then echo "error" > /dev/stderr
+  bash help.sh
+echo exit 15;
 fi
 
 
