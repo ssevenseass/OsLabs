@@ -34,10 +34,3 @@ echo exit 33;
 fi
 
 
-  if ! [[ $1 == 'sum' || $1 == 'sub' || $1 == 'mul' || $1 == 'div' ]]
- then echo "error" > /dev/stderr
-  bash help.sh
-echo exit 15;
-fi
-
-
