@@ -13,6 +13,6 @@
 GREP_COLOR="1;33" grep --color="always" "Warning" filename
 GREP_COLOR="1;34" grep --color="always" "Information" filename
 
- cat  filename
+ rm  filename
 fi
 
