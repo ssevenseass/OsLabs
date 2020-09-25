@@ -23,7 +23,12 @@ printf "Enter args: "
  read -r args
   case $option in
 A|calc)
-  bash calc.sh "$args";;
+ echo "Enter: value1"
+read -r val1
+ echo "Enter value2"
+read -r val2
+
+ bash calc.sh "$args" "$val1" "$val2";;
 B|search)
   bash search.sh "$args";;
 C|reverse)
