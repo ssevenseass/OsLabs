@@ -7,5 +7,4 @@ echo  "error" > /dev/stderr
 echo exit 19;
 else tac $1  >  $2
   fi
-echo $#
 
