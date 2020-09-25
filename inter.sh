@@ -35,7 +35,7 @@ E|log)
 F|exit)
   bash exit.sh "$args";;
 G|quit)
-  exit;;
+  break 2;;
 H|help)
   bash help.sh;;
 
