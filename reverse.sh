@@ -2,8 +2,10 @@
 
  if ! [ -f $1 ]
  then
-echo -e 1>&2
+echo  "error" > /dev/stderr
+  bash help.sh
+echo exit 19;
 else tac $1  >  $2
- fi
+  fi
 echo $#
 
