@@ -11,13 +11,12 @@ read number1 char number2
  esac
 else
 
-read number1 number2
  argument="$1"
   case $argument in
-"sum") echo $((number1 + number2));;
-"sub") echo $((number1 - number2));;
-"mul") echo $((number1 * number2));;
-"div") [ $number2 -eq 0 ] && echo "error" || echo $((number / number2));;
+"sum") echo $(($2 + $3));;
+"sub") echo $(($2 - $3));;
+"mul") echo $(($2 * $3));;
+"div") [ $3 -eq 0 ] && echo "error" || echo $(($2 / $3));;
  esac
 fi
   if [[ $# -ne 3 ]]; then
@@ -27,10 +26,8 @@ echo exit 11;
 fi
 
 
-  if [[ $2 =~ ^[+-]?[0-9]+([.][0-9]?$ ]] || ![[ $3=~ ^[+-]?[0-9]+([.][0-9]?$ ]]; then
-echo "error" > /dev/stderr
+ if ! [[ $2 =~ ^-?[[:digit:]]+$ ]]; then
+  echo "error" > /dev/stderr
   bash help.sh
-echo exit 33;
+echo exit 18;
 fi
-
-
