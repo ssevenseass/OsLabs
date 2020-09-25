@@ -10,7 +10,7 @@ bash calc.sh;;
 bash search.sh;;
 
 "reverse")
-bash reverse.sh $3 $4;;
+bash reverse.sh $2 $3;;
 
 "strlen")
 bash strlen.sh;;
