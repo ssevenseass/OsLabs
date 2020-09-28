@@ -6,5 +6,5 @@
 then
  tac $1  >  $2
 else
-  exit 1 >/dev/stderr
+  exit 1 >&2
 fi
