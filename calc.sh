@@ -8,7 +8,7 @@
 "div") [[ "$3" -eq 0 ]] && echo "error" || echo "$(($2 / $3))";;
  *)
 echo "command is not found">&2
-exit 5
+
 esac
 
 

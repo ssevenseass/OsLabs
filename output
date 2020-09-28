@@ -19,8 +19,6 @@ bash strlen.sh "$2";;
 bash log.sh;;
 
 "exit")
-[[ $# -eq 1 ]] && exit 0
-[[ $# > 2 ]] && echo "слишком много аргументов"
 bash exit.sh "$2";;
 
 "help")

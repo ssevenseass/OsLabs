@@ -1,11 +1,8 @@
 #!/bin/bash
 
 
-  if grep -rn $2 / $1;
-then return
-  else
-echo "no occurrences">&2;
-fi
+ [[ -d "$1" ]] && "directory is not found"
+  grep -r $2 $1  #2>/dev/null
 
 
 

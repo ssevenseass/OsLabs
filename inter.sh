@@ -13,67 +13,86 @@ function My_menu {
   echo -e "\tG. HELP"
 }
 
- while [ $? -ne 1 ]
-  do
+while :
+do
 My_menu
 printf "Enter the section: "
  read -r option
   case $option in
 A|calc)
 
-
+while :
+do
 printf "Enter args: "
  read -r args
 if [[ "$args" != "sum" && "$args" != "sub" && "$args" != "mul" && "$args" != "div" ]]
 then echo "argument is not found">&2
+else break
 fi
+done
 
- echo "Enter: value1"
-read -r val1
-  re='^[+-]?[0-9]+$'
-if   ! [[ $val1 =~ $re ]]; then
-  echo "cannot" >&2;
-exit 1
- fi
- echo "Enter value2"
-read -r val2
-  re='^[+-]?[0-9]+$'
-if  ! [[ $val2 =~ $re ]]; then
- echo "cannot" >&2
-exit 1
- fi
-  if [ -f "calc.sh" ]
-then echo "file io don't exist">&2
-fi
-  if [ -f "calc.sh" ]
+while :
+ do
+echo "Enter: value1"
+read  val1
+re='^[+-]?[0-9]+$'
+ [[ $val1 =~ $re ]] && break
+echo "cannot">&2;
+done
+
+while :
+do
+echo "Enter: value2"
+read  val2
+re='^[+-]?[0-9]+$'
+[[ $val2 =~ $re ]] && break
+echo "cannot">&2;
+done
+
+ if ! [ -f "calc.sh" ]
 then echo "file is not found">&2
 else bash calc.sh "$args" "$val1" "$val2"
 fi;;
+
 B|search)
 
-printf "Enter the expression: "
-read -r arg1
+while :
+do
 printf "Enter the directory: "
-read -d arg2
-  if ! [ -d "$arg2" ]
-then echo "directory is not found">&2
-fi
-  if [ -f "search.sh" ]
+read  arg1
+  [[ -d "$arg1" ]] && break
+echo "directory is not found">&2;
+done
+printf "Enter: "
+read  arg2
+
+
+  if ! [ -f "search.sh" ]
 then echo "cannot">&2
 else bash search.sh "$arg1" "$arg2"
  fi;;
 C|reverse)
+while :
+do
 echo "Enter 1 arg:"
 read -r arg1
   if ! [ -f "$arg1" ]
-then echo "cannot" >&2
+then echo "cannot" >&2;
+else break
 fi
+done
+
+while :
+do
 echo "Enter 2 arg"
 read -r arg2
   if ! [ -f "$arg2" ]
-then echo "cannot" >&2
+then echo "cannot" >&2;
+else break
 fi
-  if [ -f "reverse.sh" ]
+done
+
+  if ! [ -f "reverse.sh" ]
 then echo "error" >&2
 else bash reverse.sh "$arg1" "$arg2"
 fi;;
@@ -93,15 +112,11 @@ fi;;
 F|exit)
 
 printf "Enter arg: "
- read -r arg
- if [ -z "$arg" ]
-then exit 0;
-else
-exit "$arg"
-fi
-  if ! [ -f "exit.sh" ]
-then echo "error file">&2
-else bash exit.sh "$arg"
+ read arg
+ if [ -z $arg ]
+then exit 0
+  #if [[ $# > 2 ]] ; then echo "error">&2
+bash exit.sh "$arg"
 fi;;
 G|help)
   if ! [ -f "help.sh" ]
@@ -110,12 +125,19 @@ else bash help.sh
 fi;;
 
 *)
-echo
-  exit 3;
-esac
-  echo
-read n
- done
-echo end
 
+esac
+while :
+do
+  echo "вернуться в меню [yes] [no]">&2
+
+read str
+ if [[ $str == "no" ]] ; then
+exit 0
+elif [[ $str == "yes" ]] ; then
+break
+else echo "command not found">&2
+fi
+ done
+done
 
