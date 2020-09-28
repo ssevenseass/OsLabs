@@ -45,9 +45,9 @@ exit 1
   if [ -f "calc.sh" ]
 then echo "file io don't exist">&2
 fi
-  bash calc.sh "$args" "$val1" "$val2"
   if [ -f "calc.sh" ]
 then echo "file is not found">&2
+else bash calc.sh "$args" "$val1" "$val2"
 fi;;
 B|search)
 
@@ -58,9 +58,9 @@ read -d arg2
   if ! [ -d "$arg2" ]
 then echo "directory is not found">&2
 fi
-  bash search.sh "$arg1" "$arg2"
   if [ -f "search.sh" ]
 then echo "cannot">&2
+else bash search.sh "$arg1" "$arg2"
  fi;;
 C|reverse)
 echo "Enter 1 arg:"
@@ -73,22 +73,22 @@ read -r arg2
   if ! [ -f "$arg2" ]
 then echo "cannot" >&2
 fi
-  bash reverse.sh  "$arg1" "$arg2"
   if [ -f "reverse.sh" ]
 then echo "error" >&2
+else bash reverse.sh "$arg1" "$arg2"
 fi;;
 D|strlen)
 
 printf "Enter arg: "
  read -r arg
-  bash strlen.sh "$arg"
   if ! [ -f "strlen.sh" ]
 then echo "error file" >&2
+else bash strlen.sh "$arg"
 fi;;
 E|log)
-  bash log.sh "$args"
   if ! [ -f "log.sh" ]
 then echo "error file" >&2
+else bash log.sh "$args"
 fi;;
 F|exit)
 
@@ -99,14 +99,14 @@ then exit 0;
 else
 exit "$arg"
 fi
-  bash exit.sh "$arg"
   if ! [ -f "exit.sh" ]
 then echo "error file">&2
+else bash exit.sh "$arg"
 fi;;
 G|help)
-  bash help.sh
   if ! [ -f "help.sh" ]
 then echo "error file" >&2
+else bash help.sh
 fi;;
 
 *)
