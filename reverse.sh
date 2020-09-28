@@ -1,10 +1,15 @@
 #!/bin/bash
 
 
-
+  if ! [[ -f "$2" ]]; then
+touch $2
+fi
   if [ -f $1 ]
 then
- tac $1  >  $2
+ rev "$1" > n
+tac n > "$2"
+  rm n
 else
-  exit 1 >&2
+echo "file is not found">&2
+  exit 1
 fi

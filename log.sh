@@ -2,9 +2,8 @@
 
   name=/var/log/anaconda/X.log
  if ! [[ -f $name ]]; then
-  echo "error" > /dev/stderr
- bash help.sh
-  echo exit 1;
+  echo "error" >&2
+  exit 11
  else
 
  sed "s/] (WW)/] Warning:/p" $name > filename
