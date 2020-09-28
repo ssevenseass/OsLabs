@@ -25,7 +25,7 @@ A|calc)
 printf "Enter args: "
  read -r args
 if [[ "$args" != "sum" && "$args" != "sub" && "$args" != "mul" && "$args" != "div" ]]
-then echo "argument is not found">/dev/stderr
+then echo "argument is not found">&2
 fi
 
  echo "Enter: value1"
@@ -43,7 +43,7 @@ if  ! [[ $val2 =~ $re ]]; then
 exit 1
  fi
   if [ -f "calc.sh" ]
-then echo "file io don't exist">/dev/stderr
+then echo "file io don't exist">&2
 fi
   bash calc.sh "$args" "$val1" "$val2"
   if [ -f "calc.sh" ]
@@ -111,7 +111,7 @@ fi;;
 
 *)
 echo
-  exit 1;
+  exit 3;
 esac
   echo
 read n
