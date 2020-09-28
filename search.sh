@@ -1,21 +1,11 @@
 #!/bin/bash
 
 
-  if [ DIR="$1" ] && [ -d "$DIR" ]; then
- ls "$DIR" | grep "$2"
-else echo "error" > /dev/stderr
- bash help.sh
- echo exit 22;
+  if grep -rn $2 / $1
+then return
+  else
+echo "no occurrences">/dev/stderr
 fi
 
-if [[ $# -ne 2 ]]; then
-  echo "error" > /dev/stderr
-bash help.sh
- echo exit 77;
-fi
 
-  if ! [ -d /path/directory/ ]; then
-  echo "error" > /dev/stderr
-  bash help.sh
-echo exit 20;
-fi
+

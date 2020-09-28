@@ -4,16 +4,16 @@ command="$1"
   case $command in
 
 "calc")
-bash calc.sh;;
+bash calc.sh "$2" "$3" "$4";;
 
 "search")
-bash search.sh;;
+bash search.sh "$2" "$3";;
 
 "reverse")
-bash reverse.sh $2 $3;;
+bash reverse.sh "$2" "$3";;
 
 "strlen")
-bash strlen.sh;;
+bash strlen.sh "$2";;
 
 "log")
 bash log.sh;;

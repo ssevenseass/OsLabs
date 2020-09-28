@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-  if [ -z "$1" ]; then
- echo exit $?
+  code='^[+-]?[0-9]+$'
+ if [[ $1 =~ $code ]]; then
+  exit "$1"
 else
- code="$1"
-echo exit $code
+  exit 0
 fi
 
