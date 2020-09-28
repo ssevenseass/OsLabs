@@ -19,7 +19,7 @@ bash strlen.sh "$2";;
 bash log.sh;;
 
 "exit")
-bash exit.sh;;
+bash exit.sh "$2";;
 
 "help")
 bash help.sh;;
@@ -28,8 +28,7 @@ bash help.sh;;
 bash inter.sh;;
 
 *)
-echo "error" >/dev/stderr;
-bash help.sh
- echo exit 88;;
+echo "error" >&2;
+ exit 8;;
 esac
 
