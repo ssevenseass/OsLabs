@@ -11,5 +11,5 @@ tac n > "$2"
   rm n
 else
 echo "file is not found">&2
-  exit 1
+  exit 16
 fi
