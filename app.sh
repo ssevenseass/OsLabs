@@ -13,6 +13,7 @@ bash search.sh "$2" "$3";;
 bash reverse.sh "$2" "$3";;
 
 "strlen")
+[[ $# -eq 1 ]] && echo "too little arguments" && exit 1
 bash strlen.sh "$2";;
 
 "log")
