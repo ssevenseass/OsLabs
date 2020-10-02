@@ -5,7 +5,6 @@ source func.sh
 
 ! int $2 && echo "argument is not int" >&2
 ! int $3 && echo "argument is not int" >&2
-
   case $1 in
 "sum") echo "$(($2+$3))";;
 "sub") echo "$(($2-$3))";;

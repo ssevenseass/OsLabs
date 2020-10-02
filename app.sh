@@ -4,6 +4,7 @@ command="$1"
   case $command in
 
 "calc")
+[[ $# > 3 ]] && echo "many arguments" >&2
 bash calc.sh "$2" "$3" "$4";;
 
 "search")
@@ -21,7 +22,7 @@ bash log.sh;;
 
 "exit")
   [[ $# -eq 1 ]] && exit 0
-  [[ $# > 2 ]] && exho "many arguments" >&2
+  [[ $# > 2 ]] && echo "many arguments" >&2
 exitt "$2";;
 
 "help")
