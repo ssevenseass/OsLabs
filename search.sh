@@ -1,21 +1,6 @@
 #!/bin/bash
 
 
-  if [ DIR="$1" ] && [ -d "$DIR" ]; then
- ls "$DIR" | grep "$2"
-else echo "error" > /dev/stderr
- bash help.sh
- echo exit 22;
-fi
+  [[ -d "$1" ]] && "directory is not found">&2
+ grep -r $2 $1 #2>/dev/null
 
-if [[ $# -ne 2 ]]; then
-  echo "error" > /dev/stderr
-bash help.sh
- echo exit 77;
-fi
-
-  if ! [ -d /path/directory/ ]; then
-  echo "error" > /dev/stderr
-  bash help.sh
-echo exit 20;
-fi

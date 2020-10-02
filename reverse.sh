@@ -1,16 +1,14 @@
 #!/bin/bash
 
- if ! [ -f $1 ]
- then
-echo  "error" > /dev/stderr
-  bash help.sh
-echo exit 19;
-else tac $1  >  $2
+ if ! [[ -f "$2" ]] ; then
+touch $2
   fi
-
-if [ $# -eq 0 ];
- then
-echo "error" > /dev/stderr
-  bash help.sh
-echo exit 21;
+if [ -f $1 ] ;
+then
+  rev "$1" > n
+tac n > "$2"
+  rm n
+else
+  echo "file is not found">&2
+exit 16
 fi
