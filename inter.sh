@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source func.sh
+source exit.sh
 function My_menu {
  clear
   echo
@@ -111,13 +112,9 @@ bash log.sh "$args"
 F|exit)
 while :
 do
- printf "Enter argument: "
+printf "Enter the arg:"
 read arg
-[[ $# -eq 0 ]] && exit 0
-[[ $# -eq 1 ]] && int $arg && exit $arg
-[[ $# -eq 1 ]] && echo "argument is not int" >&2
-[[ $# > 1 ]] && echo "many arguments" >&2
-bash exit.sh "$arg"
+interEx $arg
 done
 ;;
 G|help)

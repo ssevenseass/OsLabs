@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source exit.sh
 command="$1"
   case $command in
 
@@ -20,7 +20,9 @@ bash strlen.sh "$2";;
 bash log.sh;;
 
 "exit")
-bash exit.sh "$2";;
+  [[ $# -eq 1 ]] && exit 0
+  [[ $# > 2 ]] && exho "many arguments" >&2
+exitt "$2";;
 
 "help")
 bash help.sh;;
