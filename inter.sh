@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source func.sh
 function My_menu {
  clear
   echo
@@ -15,6 +16,7 @@ function My_menu {
 
  while :
   do
+
 My_menu
 printf "Enter the section: "
  read -r option
@@ -22,7 +24,6 @@ printf "Enter the section: "
 A|calc)
 while :
 do
-
 printf "Enter args: "
  read -r args
 if [[ "$args" != "sum" && "$args" != "sub" && "$args" != "mul" && "$args" != "div" ]]
@@ -35,21 +36,25 @@ while :
 do
  echo "Enter: value1"
 read  val1
- re='^[+-]?[0-9]+$'
-[[ $val1 =~ $re ]] && break
- echo "cannot">&2;
+ ! [[ $val1 -eq $val1 ]] 2>/dev/null && echo "error argument" && continue
+int $val1 && break
+ echo "argument is not int" >&2
 done
 
 while :
 do
  echo "Enter value2"
 read  val2
- re='^[+-]?[0-9]+$'
-[[ $val2 =~ $re ]] && break
-echo "cannot">&2;
+ ! [[ $val2 -eq $val2 ]] 2>/dev/null && echo "error argument" && continue
+  if [[ $args == div ]] && [[ $val2 -eq 0 ]]
+ then echo "division by zero"
+continue
+ fi
+int $val2 && break
+echo "argument is not int" >&2
 done
 bash calc.sh "$args" "$val1" "$val2"
- ;;
+;;
 B|search)
 while :
 do
@@ -62,14 +67,16 @@ done
 read arg2
 bash search.sh "$arg1" "$arg2"
 ;;
+
 C|reverse)
 while :
 do
 echo "Enter 1 arg:"
 read -r arg1
- if ! [ -f "$arg1" ]
-then echo "cannot">&2;
-else break
+  errorfile $arg1 && break
+if errorfile1 $arg1
+ then echo "the file is not readable" >&2
+else echo "there is no such file" >&2
 fi
 done
 
@@ -77,9 +84,13 @@ while :
 do
 echo "Enter 2 arg"
 read -r arg2
-  if ! [ -f "$arg2" ]
-then echo "cannot">&2;
-else break
+  if ! errorfile $arg2
+ then touch $arg2
+  fi
+  if ! errorfile2 $arg2
+then echo "not written to a file" >&2
+ else
+break
 fi
 done
 bash reverse.sh "$arg1" "$arg2"
@@ -87,7 +98,10 @@ bash reverse.sh "$arg1" "$arg2"
 D|strlen)
 
 printf "Enter args: "
- read -r arg
+ read arg
+ if [[ $arg -eq 0 ]] ; then
+echo "string is empty" >&2
+fi
 bash strlen.sh "$arg"
 ;;
 
@@ -95,13 +109,17 @@ E|log)
 bash log.sh "$args"
 ;;
 F|exit)
-
-printf "Enter args: "
- read  arg
- if [ -z $arg ]
-then exit 0
- bash exit.sh "$arg"
-fi;;
+while :
+do
+ printf "Enter argument: "
+read arg
+[[ $# -eq 0 ]] && exit 0
+[[ $# -eq 1 ]] && int $arg && exit $arg
+[[ $# -eq 1 ]] && echo "argument is not int" >&2
+[[ $# > 1 ]] && echo "many arguments" >&2
+bash exit.sh "$arg"
+done
+;;
 G|help)
 bash help.sh
 ;;
@@ -117,9 +135,9 @@ read str
 exit 0
  elif [[ $str == "yes" ]] ; then
 break
-else echo "command not found">&2
+  else echo "command is not found" >&2
 fi
- done
-  done
+done
+done
 
 

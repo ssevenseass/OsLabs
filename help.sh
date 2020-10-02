@@ -10,4 +10,3 @@ echo "APPLICATION HELP.
  F. The command EXIT.
  G. The command HELP."
 
-

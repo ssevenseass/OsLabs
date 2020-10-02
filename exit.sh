@@ -1,7 +1,7 @@
 #!/bin/bash
 
-
-  code='^[+-]?[0-9]+$'
-[[ $1 =~ $code ]] && [[ $# -eq 1 ]] && exit "$1"
-[[ $# -eq 1 ]] && echo "command is not int"
-
+source func.sh
+ arg=$1
+[[ $# -eq 0 ]] && exit 0
+[[ $# -eq 1 ]] && int $arg && exit $arg
+[[ $# -eq 1 ]] && echo "argument is not int" >&2
